@@ -175,8 +175,17 @@ const KenyaPage = () => {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           {/* Background gradient */}
-          <div className="w-full h-full bg-gradient-to-br from-green-900 via-yellow-800 to-red-900"></div>
-          <div className="absolute inset-0 bg-black bg-opacity-35"></div>
+          <div className="w-full h-full "></div>
+         <div className="absolute inset-0 w-full h-full">
+                  <Image
+                    src="/image/masai1.jpg" 
+                    alt="Safari Background"
+                    fill
+                    className="object-cover brightness-[0.3]"
+                    priority
+                    sizes="100vw"
+                  />
+                </div>
         </div>
         
         <div className="relative z-10 text-center text-white max-w-6xl px-6">

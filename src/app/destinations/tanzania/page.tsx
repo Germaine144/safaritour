@@ -159,17 +159,23 @@ const TanzaniaPage = () => {
     setSelectedOffering(null);
     setCurrentImageIndex(0);
   };
-
-  // Removed nextImage and prevImage as they are not used and trigger warnings.
-
   return (
     <>
       {/* Hero Section with Video Background */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           {/* Background image fallback */}
-          <div className="w-full h-full bg-gradient-to-br from-amber-900 via-orange-800 to-red-900"></div>
-          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+          <div className="w-full h-full "></div>
+         <div className="absolute inset-0 w-full h-full">
+                  <Image
+                    src="/image/kilimanjaro.jpg" 
+                    alt="Safari Background"
+                    fill
+                    className="object-cover brightness-[0.3]"
+                    priority
+                    sizes="100vw"
+                  />
+                </div>
         </div>
         
         <div className="relative z-10 text-center text-white max-w-6xl px-6">

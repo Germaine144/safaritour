@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import Image from 'next/image'; // Import Next.js Image component
+import Image from 'next/image'; 
 import Link from 'next/link';   // Import Next.js Link component
 import { ArrowRight, Star, X, Calendar } from 'lucide-react'; // Import X and Calendar icons
 
@@ -168,8 +168,16 @@ const RwandaPage = () => {
       {/* Hero Section with Video Background */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
-          {/* Corrected hero background: Added a base color. Adjust bg-green-900 to your desired color/gradient */}
-          <div className="w-full h-full bg-green-900 bg-opacity-50"></div> 
+         <div className="absolute inset-0 w-full h-full">
+                   <Image
+                     src="/image/journey.jpg" 
+                     alt="Safari Background"
+                     fill
+                     className="object-cover brightness-[0.3]"
+                     priority
+                     sizes="100vw"
+                   />
+                 </div> 
         </div>
         
         <div className="relative z-10 text-center text-white max-w-6xl px-6">

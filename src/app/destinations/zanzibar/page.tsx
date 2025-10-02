@@ -170,7 +170,16 @@ const ZanzibarPage = () => {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <div className="w-full h-full bg-gradient-to-br from-cyan-600 via-blue-700 to-indigo-900"></div>
-          <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+          <div className="absolute inset-0 w-full h-full">
+                   <Image
+                     src="/image/zuribech.jpg" 
+                     alt="Safari Background"
+                     fill
+                     className="object-cover brightness-[0.3]"
+                     priority
+                     sizes="100vw"
+                   />
+                 </div>
         </div>
         
         <div className="relative z-10 text-center text-white max-w-6xl px-6">

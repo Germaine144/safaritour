@@ -23,7 +23,7 @@ const SafariHomepage = () => {
     {
       name: "Akagera Nation Park",
       slug: "akagera-national-park",
-      image: "/image/akagera.png",
+      image: "/image/akagerant.jpg",
       description: "Rwanda scenic savannah wildlife and conservation haven"
     },
     {
@@ -67,11 +67,11 @@ const SafariHomepage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-visible bg-gradient-to-br from-orange-900 via-orange-800 to-orange-700">
+      <section className="relative min-h-screen flex items-center justify-center ">
         {/* Background Image */}
         <div className="absolute inset-0 w-full h-full">
           <Image
-            src="/image/wild.jpg" // Using your fallback image as the main background
+            src="/image/wild.jpg" 
             alt="Safari Background"
             fill
             className="object-cover brightness-[0.3]"
@@ -96,7 +96,7 @@ const SafariHomepage = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button className="bg-orange-700 hover:bg-orange-800 text-white px-10 py-4 uppercase tracking-widest font-semibold transition-all duration-300 transform hover:scale-105 shadow-xl">
+            <button className="bg-orange-700 hover:bg-orange-800 text-white px-10 py-4 uppercase tracking-widest font-semibold transition-all duration-300 transform hover:scale-105 shadow-xl rounded-lg">
               START YOUR JOURNEY
             </button>
             
@@ -104,7 +104,7 @@ const SafariHomepage = () => {
             <div className="relative">
               <button 
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-10 py-4 uppercase tracking-widest font-semibold transition-all duration-300 shadow-xl flex items-center space-x-2"
+                className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-10 py-4 uppercase tracking-widest font-semibold transition-all duration-300 shadow-xl flex items-center space-x-2 rounded-lg"
               >
                 <span>VIEW DESTINATIONS</span>
                 <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} />
@@ -180,7 +180,7 @@ const SafariHomepage = () => {
                 brings new discoveries and every sunset paints the sky in colors you&apos;ve never imagined.
               </p>
               
-              <button className="bg-orange-700 hover:bg-orange-800 text-white px-8 py-4 uppercase tracking-widest font-semibold transition-all duration-300 flex items-center space-x-2 shadow-lg cursor-pointer">
+              <button className="bg-orange-700 hover:bg-orange-800 text-white px-8 py-4 uppercase tracking-widest font-semibold transition-all duration-300 flex items-center space-x-2 shadow-lg cursor-pointer rounded-lg">
                 <span>DISCOVER MORE</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
@@ -337,7 +337,7 @@ const SafariHomepage = () => {
                 </div>
               </div>
               
-              <button className="bg-orange-700 hover:bg-orange-700 text-white px-10 py-4 uppercase tracking-widest font-semibold transition-all duration-300 flex items-center space-x-3 shadow-lg group">
+              <button className="bg-orange-700 hover:bg-orange-700 text-white px-10 py-4 uppercase tracking-widest font-semibold transition-all duration-300 flex items-center space-x-3 shadow-lg group rounded-lg">
                 <span>LEARN MORE</span>
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </button>
@@ -362,32 +362,29 @@ const SafariHomepage = () => {
         </div>
       </section>
 
-      {/* Gallery Grid Section */}
-      <section className="py-24 bg-gray-50">
+     <section className="py-32 bg-gray-50">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {[
-              "/image/aka nat.jpg",
-              "/image/ele1.jpeg",
-              "/image/loin.png",
-              "/image/masai.jpg",
-              "/image/canopy.jpg"
-            ].map((src, index) => (
-              <div key={index} className="group relative overflow-hidden rounded-lg shadow-lg aspect-square">
-                <Image
-                  src={src}
-                  alt={`Safari Gallery ${index + 1}`}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
-                />
-                <div className="absolute inset-0 bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                  <div className="transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <ArrowRight className="w-8 h-8 text-white" />
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="text-center mb-16">
+            <h3 className="text-5xl font-bold text-gray-900 mb-4">A curated collection of nature’s untamed beauty, captured in fleeting moments through the lens</h3>
+            <p className="text-xl text-gray-600">A glimpse into untamed beauty through the lens — capturing fleeting moments of wilderness, raw emotion, and nature’s quiet power, frozen in time forever</p>
+          </div>
+          
+          <div className="grid grid-cols-12 gap-4 ">
+            <div className="col-span-12 md:col-span-5 relative h-[400px] ">
+              <Image src="/image/kii3.jpg" alt="Gallery 1" fill className="object-cover rounded-lg" sizes="50vw" />
+            </div>
+            <div className="col-span-12 md:col-span-7 relative h-[400px] ">
+              <Image src="/image/wilds2.jpg" alt="Gallery 2" fill className="object-cover rounded-lg" sizes="50vw" />
+            </div>
+            <div className="col-span-12 md:col-span-4 relative h-[300px]">
+              <Image src="/image/loin.png" alt="Gallery 3" fill className="object-cover rounded-lg" sizes="33vw" />
+            </div>
+            <div className="col-span-12 md:col-span-4 relative h-[300px] ">
+              <Image src="/image/serengetisafari.jpg" alt="Gallery 4" fill className="object-cover rounded-lg" sizes="33vw" />
+            </div>
+            <div className="col-span-12 md:col-span-4 relative h-[300px] ">
+              <Image src="/image/canopy.jpg" alt="Gallery 5" fill className="object-cover rounded-lg" sizes="33vw" />
+            </div>
           </div>
         </div>
       </section>
@@ -412,11 +409,12 @@ const SafariHomepage = () => {
           
           <div className="max-w-lg mx-auto">
             <div className="flex flex-col sm:flex-row gap-4">
-              <input 
-                type="email" 
-                placeholder="Enter your email address"
-                className="flex-1 p-4 "
-              />
+             <input 
+  type="email" 
+  placeholder="Enter your email address"
+  className="flex-1 p-4 border-2 border-white rounded-lg text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 transition"
+/>
+
               <button className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 uppercase tracking-widest shadow-lg">
                 SUBSCRIBE
               </button>
