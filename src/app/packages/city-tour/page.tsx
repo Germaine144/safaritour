@@ -302,10 +302,10 @@ export default function CityTourPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-orange-500 to-red-500">
+      <section className="py-20 ">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-serif font-bold text-white mb-6">Ready for Your Kigali Adventure?</h2>
-          <p className="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
+          <h2 className="text-4xl font-serif font-bold text-black mb-6">Ready for Your Kigali Adventure?</h2>
+          <p className="text-xl text-gray-800 mb-8 max-w-2xl mx-auto">
             Join us for unforgettable experiences that showcase the best of Rwanda&apos;s capital city and its natural wonders
           </p>
           <button className="bg-white text-orange-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-orange-50 transform hover:scale-105 transition-all duration-300 shadow-lg">

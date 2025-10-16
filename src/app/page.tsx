@@ -146,16 +146,16 @@ const SafariHomepage = () => {
       {/* Safari Experience Section */}
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div className="relative">
               <Image
                 src="/image/tourist.jpg"
                 alt="Safari Experience"
                 width={800}
                 height={500}
-                className="w-full h-[500px] object-cover rounded-lg shadow-2xl"
+                className="w-full h-64 sm:h-80 md:h-[500px] object-cover rounded-lg shadow-2xl"
               />
-              <div className="absolute -bottom-8 -right-8 w-36 h-36 bg-orange-700 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-xl">
+              <div className="absolute -bottom-6 -right-6 sm:-bottom-8 sm:-right-8 w-28 h-28 sm:w-36 sm:h-36 bg-orange-700 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-xl">
                 <div className="text-center">
                   <div>AMAZING</div>
                   <div className="text-sm">AFRICAN</div>
@@ -237,7 +237,7 @@ const SafariHomepage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
             {destinations.map((dest, index) => (
               <div
                 key={index}
@@ -246,7 +246,7 @@ const SafariHomepage = () => {
                   setActiveDestination(index);
                 }}
               >
-                <div className="relative w-full h-96 md:h-[400px] transition-transform duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
+                <div className="relative w-full h-80 sm:h-96 md:h-[400px] transition-transform duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
                   {/* Front of card */}
                   <div className="absolute inset-0 w-full h-full backface-hidden">
                     <div className="relative overflow-hidden rounded-2xl shadow-2xl h-full">
@@ -303,7 +303,7 @@ const SafariHomepage = () => {
       {/* Great Wildebeest Migration Section */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div className="space-y-8">
               <div className="text-orange-700 uppercase tracking-[0.2em] font-semibold text-sm">
                 THE GREAT WILDEBEEST
@@ -322,7 +322,7 @@ const SafariHomepage = () => {
                 moments of raw natural drama.
               </p>
               
-              <div className="grid grid-cols-3 gap-8 py-8 border-t border-b border-gray-200">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 py-8 border-t border-b border-gray-200">
                 <div className="text-center">
                   <div className="text-4xl font-bold text-orange-700 mb-2">2M+</div>
                   <div className="text-sm text-gray-600 uppercase tracking-wide">Animals</div>
@@ -349,7 +349,7 @@ const SafariHomepage = () => {
                 alt="Wildebeest Migration"
                 width={800}
                 height={500}
-                className="w-full h-[500px] object-cover rounded-lg shadow-2xl"
+                className="w-full h-64 sm:h-80 md:h-[500px] object-cover rounded-lg shadow-2xl"
               />
               <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-lg p-4 shadow-lg">
                 <div className="flex items-center space-x-2 text-gray-900">
@@ -370,19 +370,19 @@ const SafariHomepage = () => {
           </div>
           
           <div className="grid grid-cols-12 gap-4 ">
-            <div className="col-span-12 md:col-span-5 relative h-[400px] ">
+            <div className="col-span-12 md:col-span-5 relative h-64 sm:h-80 md:h-[400px] ">
               <Image src="/image/kii3.jpg" alt="Gallery 1" fill className="object-cover rounded-lg" sizes="50vw" />
             </div>
-            <div className="col-span-12 md:col-span-7 relative h-[400px] ">
+            <div className="col-span-12 md:col-span-7 relative h-64 sm:h-80 md:h-[400px] ">
               <Image src="/image/wilds2.jpg" alt="Gallery 2" fill className="object-cover rounded-lg" sizes="50vw" />
             </div>
-            <div className="col-span-12 md:col-span-4 relative h-[300px]">
+            <div className="col-span-12 md:col-span-4 relative h-56 sm:h-64 md:h-[300px]">
               <Image src="/image/loin.png" alt="Gallery 3" fill className="object-cover rounded-lg" sizes="33vw" />
             </div>
-            <div className="col-span-12 md:col-span-4 relative h-[300px] ">
+            <div className="col-span-12 md:col-span-4 relative h-56 sm:h-64 md:h-[300px] ">
               <Image src="/image/serengetisafari.jpg" alt="Gallery 4" fill className="object-cover rounded-lg" sizes="33vw" />
             </div>
-            <div className="col-span-12 md:col-span-4 relative h-[300px] ">
+            <div className="col-span-12 md:col-span-4 relative h-56 sm:h-64 md:h-[300px] ">
               <Image src="/image/canopy.jpg" alt="Gallery 5" fill className="object-cover rounded-lg" sizes="33vw" />
             </div>
           </div>
@@ -399,7 +399,7 @@ const SafariHomepage = () => {
           }}
         ></div>
         
-        <div className="relative z-10 container mx-auto px-16 text-center">
+        <div className="relative z-10 container mx-auto px-6 sm:px-8 md:px-16 text-center">
           <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
             JOIN OUR COMMUNITY
           </h2>
