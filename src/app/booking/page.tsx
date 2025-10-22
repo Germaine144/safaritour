@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, Suspense } from "react";
 import Image from "next/image";
 // import Link from "next/link"; // Not used in the provided snippet
 import { useSearchParams } from "next/navigation";
@@ -69,7 +69,7 @@ const COUNTRY_ITINERARIES: Record<CountryKey, Array<{ title: string; duration: s
   ]
 };
 
-export default function BookingPage() {
+function BookingPageContent() {
   const params = useSearchParams();
   const initialTab = (params.get("country") || params.get("package") ? "destinations" : "packages") as "packages" | "destinations"; // Corrected initialTab logic
   const [activeTab, setActiveTab] = useState<"packages" | "destinations">(initialTab);
@@ -114,6 +114,41 @@ export default function BookingPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <main className="min-h-screen bg-white">
+      {/* Hero */}
+      <section className="relative h-[40vh] w-full">
+        <Image src="/image/bg.png" alt="Booking" fill className="object-cover" sizes="100vw" priority />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 flex items-center justify-center text-center px-6">
+          <div className="text-white max-w-3xl">
+            <h1 className="text-4xl md:text-5xl font-serif font-bold tracking-tight mb-4">Book Your Safari</h1>
+            <p className="text-lg md:text-xl opacity-90">Loading booking options...</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Loading state */}
+      <section className="py-8">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center justify-center py-20">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+export default function BookingPage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <BookingPageContent />
+    </Suspense>
   );
 }
 
