@@ -283,7 +283,7 @@ function BookingDetails({ CTALabel, disabled }: { CTALabel: string; disabled: bo
 
   if (isSubmitted) {
     return (
-      <div className="bg-white rounded-2xl border border-gray-200 shadow p-8 text-center">
+      <div className="bg-white rounded-2xl border border-gray-200 shadow p-8 text-center text-black">
         <div className="mb-6">
           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -315,7 +315,7 @@ function BookingDetails({ CTALabel, disabled }: { CTALabel: string; disabled: bo
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-200 shadow p-6 space-y-4">
+    <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-200 shadow p-6 space-y-4 text-black">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
@@ -343,7 +343,7 @@ function BookingDetails({ CTALabel, disabled }: { CTALabel: string; disabled: bo
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Notes</label>
+        <label className="block text-sm font-medium text-gray-800 mb-1">Notes</label>
         <textarea rows={4} value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Tell us about your preferences, special requests, or any questions you have..." className="w-full rounded-lg border-gray-300 focus:ring-orange-500 focus:border-orange-500" />
       </div>
 

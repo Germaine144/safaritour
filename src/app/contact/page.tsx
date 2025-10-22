@@ -119,7 +119,7 @@ const ContactPage = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 text-black">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12">
@@ -351,7 +351,7 @@ const ContactPage = () => {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 text-black">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">

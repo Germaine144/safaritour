@@ -50,7 +50,7 @@ const AboutPage = () => {
         {/* If you want a background image for the hero, use Image component with `fill` and `priority` */}
         {/* Example with an image, uncomment and adjust src/alt as needed: */}
         <Image
-          src="/image/arena.jpg" // Path to your hero image
+          src="/image/Lotus flower.jpg" // Path to your hero image
           alt="African Safari Landscape"
           fill
           priority
