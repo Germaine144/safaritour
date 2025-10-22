@@ -30,16 +30,16 @@ const AboutPage = () => {
   ];
 
   const stats = [
-    { number: "15+", label: "Years Experience" },
+    { number: "1+", label: "Years Experience" },
     { number: "500+", label: "Happy Travelers" },
     { number: "1", label: "Passionate Founder" },
     { number: "4", label: "Countries Covered" }
   ];
 
   const founder = {
-    name: "David Kamau",
+    name: "UMUHIRE Germaine",
     role: "Founder & Safari Director",
-    image: "/image/tourist.jpg", // Using an existing image from your project
+    image: "/image/gege.jpg", // Using an existing image from your project
     description: "With over 15 years of passion for East African wildlife and conservation, I founded this safari company to share the incredible beauty of Africa with travelers from around the world. Born and raised in Kenya, I've spent countless hours in the bush, learning from local communities and wildlife experts. My mission is to create authentic, transformative experiences that not only showcase Africa's natural wonders but also support conservation efforts and empower local communities. Every safari I organize reflects my deep commitment to sustainable tourism and creating memories that last a lifetime."
   };
 
@@ -49,19 +49,19 @@ const AboutPage = () => {
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
         {/* If you want a background image for the hero, use Image component with `fill` and `priority` */}
         {/* Example with an image, uncomment and adjust src/alt as needed: */}
-        {/* <Image
-          src="/images/hero-about.jpg" // Path to your hero image
+        <Image
+          src="/image/arena.jpg" // Path to your hero image
           alt="African Safari Landscape"
           fill
           priority
-          className="object-cover object-center"
-        /> */}
+          className="object-cover object-center brightness-[0.3]"
+        />
         
         {/* Current gradient background */}
-        <div className="absolute inset-0 w-full h-full">
+        {/* <div className="absolute inset-0 w-full h-full">
           <div className="w-full h-full bg-gradient-to-br from-orange-900 via-amber-800 to-yellow-700"></div>
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        </div>
+        </div> */}
         
         <div className="relative z-10 text-center text-white max-w-4xl px-6">
           <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6">
@@ -104,7 +104,7 @@ const AboutPage = () => {
                 </h2>
                 <div className="space-y-4 text-lg text-gray-600 leading-relaxed">
                   <p>
-                    Our journey started in 2009 when our founder, David Kamau, a Kenyan-born wildlife enthusiast, 
+                    Our journey started in 2025 when our founder, UMUHIRE Germaine, a Kenyan-born wildlife enthusiast, 
                     realized that many visitors to East Africa were missing the authentic, transformative safari 
                     experiences they dreamed of.
                   </p>
@@ -123,13 +123,13 @@ const AboutPage = () => {
               </div>
               <div className="relative">
                 <Image 
-                  src="/images/big52.jpg" // Updated path
+                  src="/image/phonee.jpg" 
                   alt="Safari landscape with wildlife" 
-                  width={800} // Example width
-                  height={500} // Example height
+                  width={600} 
+                  height={600}
                   className="rounded-lg shadow-2xl w-full h-auto" // Added w-full h-auto for responsiveness
                 />
-                <div className="absolute -bottom-6 -left-6 bg-orange-700 text-white p-6 rounded-lg shadow-xl">
+                <div className="absolute -bottom-6 -left-6 bg-orange-800 text-white p-6 rounded-lg shadow-xl">
                   <p className="text-4xl font-bold">15+</p>
                   <p className="text-sm uppercase tracking-wide">Years of Excellence</p>
                 </div>
@@ -140,7 +140,7 @@ const AboutPage = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-orange-700 text-white">
+      <section className="py-20 bg-orange-900 text-white">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -319,7 +319,7 @@ const AboutPage = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-r from-orange-700 to-amber-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-orange-800 to-amber-900 text-white">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
             Ready to Start Your Adventure?
@@ -348,5 +348,4 @@ const AboutPage = () => {
     </div>
   );
 };
-
 export default AboutPage;

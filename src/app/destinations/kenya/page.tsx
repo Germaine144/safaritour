@@ -526,9 +526,9 @@ const KenyaPage = () => {
                     </div>
 
                     <div className="pt-4 sm:pt-6 pb-2 sm:pb-4 sticky bottom-0 bg-white">
-                      <button className="w-full bg-orange-600 hover:bg-orange-700 text-white py-3 sm:py-3.5 px-4 sm:px-6 rounded-md font-semibold transition-colors uppercase tracking-wide text-sm sm:text-base">
+                      {/* <button className="w-full bg-orange-600 hover:bg-orange-700 text-white py-3 sm:py-3.5 px-4 sm:px-6 rounded-md font-semibold transition-colors uppercase tracking-wide text-sm sm:text-base">
                         Book Now
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 </div>

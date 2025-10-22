@@ -486,9 +486,9 @@ const ZanzibarPage = () => {
 
                     <div className="pt-6 pb-4 sticky bottom-0 bg-white">
                       <div className="flex flex-col space-y-3">
-                        <button className="w-full bg-orange-700 hover:bg-orange-800 text-white py-3 px-6 rounded-md font-semibold transition-colors uppercase tracking-wide">
+                        {/* <button className="w-full bg-orange-700 hover:bg-orange-800 text-white py-3 px-6 rounded-md font-semibold transition-colors uppercase tracking-wide">
                           Book Now
-                        </button>  
+                        </button>   */}
                       </div>
                     </div>
                   </div>
