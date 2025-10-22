@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { ChevronDown, Star, ArrowRight } from 'lucide-react';
+import { ChevronDown, Star, ArrowRight, Hand } from 'lucide-react';
 
 const SafariHomepage = () => {
   const [activeDestination, setActiveDestination] = useState(0);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());
 
   type CountryDestination = {
     name: string;
@@ -62,6 +63,18 @@ const SafariHomepage = () => {
     setIsDropdownOpen(false);
     // Navigate to the selected destination
     window.location.href = destination.link;
+  };
+
+  const handleCardFlip = (index: number) => {
+    setFlippedCards(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
   };
 
   return (
@@ -244,9 +257,10 @@ const SafariHomepage = () => {
                 className="group cursor-pointer perspective-1000"
                 onClick={() => {
                   setActiveDestination(index);
+                  handleCardFlip(index);
                 }}
               >
-                <div className="relative w-full h-80 sm:h-96 md:h-[400px] transition-transform duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
+                <div className={`relative w-full h-80 sm:h-96 md:h-[400px] transition-transform duration-700 transform-style-preserve-3d group-hover:rotate-y-180 ${flippedCards.has(index) ? 'rotate-y-180' : ''}`}>
                   {/* Front of card */}
                   <div className="absolute inset-0 w-full h-full backface-hidden">
                     <div className="relative overflow-hidden rounded-2xl shadow-2xl h-full">
@@ -269,6 +283,10 @@ const SafariHomepage = () => {
                       {activeDestination === index && (
                         <div className="absolute top-6 right-6 w-6 h-6 bg-orange-700 rounded-full animate-pulse shadow-lg"></div>
                       )}
+                      {/* Mobile tap indicator */}
+                      <div className="absolute top-4 left-4 bg-black/50 backdrop-blur-sm rounded-full p-2 md:hidden">
+                        <Hand className="w-4 h-4 text-white animate-pulse" />
+                      </div>
                     </div>
                   </div>
 
@@ -283,7 +301,8 @@ const SafariHomepage = () => {
                         guides and carefully curated experiences.
                       </p>
                       <button
-                        onClick={() => {
+                        onClick={(e) => {
+                          e.stopPropagation();
                           if (dest.slug) {
                             window.location.href = `/packages/${dest.slug}`;
                           }
@@ -297,6 +316,14 @@ const SafariHomepage = () => {
                 </div>
               </div>
             ))}
+          </div>
+          
+          {/* Mobile interaction hint */}
+          <div className="text-center md:hidden">
+            <p className="text-sm text-gray-500 flex items-center justify-center gap-2">
+              <Hand className="w-4 h-4" />
+              Tap cards to explore more
+            </p>
           </div>
         </div>
       </section>
@@ -374,7 +401,7 @@ const SafariHomepage = () => {
               <Image src="/image/kii3.jpg" alt="Gallery 1" fill className="object-cover rounded-lg" sizes="50vw" />
             </div>
             <div className="col-span-12 md:col-span-7 relative h-64 sm:h-80 md:h-[400px] ">
-              <Image src="/image/wilds2.jpg" alt="Gallery 2" fill className="object-cover rounded-lg" sizes="50vw" />
+              <Image src="/image/journey.jpg" alt="Gallery 2" fill className="object-cover rounded-lg" sizes="50vw" />
             </div>
             <div className="col-span-12 md:col-span-4 relative h-56 sm:h-64 md:h-[300px]">
               <Image src="/image/loin.png" alt="Gallery 3" fill className="object-cover rounded-lg" sizes="33vw" />

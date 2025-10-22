@@ -16,7 +16,7 @@ export default function CityTourPage() {
       "Each itinerary is designed to showcase different aspects of Kigali's natural beauty, rich culture, and modern attractions.",
     ],
     highlights: ['Old town walking trails', 'Signature skyline viewpoints', 'Museum and culture stops', 'Local cuisine tasting', 'Adventure activities', 'Nature experiences'],
-    gallery: ['/image/cul1.jpg', '/image/bg.png', '/image/serengeti.png', '/image/aka nat.jpg'],
+    gallery: ['/image/Kigali1.jpg', '/image/kigali2.jpg', '/image/kigali3.jpg', '/image/kigali4.jpg'],
   };
 
   const itineraries = [
@@ -212,6 +212,14 @@ export default function CityTourPage() {
                       </div>
                     </div>
 
+                    {/* Primary action on card */}
+                    <a
+                      href="/booking?tab=packages&package=city-tour"
+                      className="block w-full mb-3 bg-gradient-to-r from-orange-500 to-red-500 text-white text-center py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300"
+                    >
+                      Book Now
+                    </a>
+
                     <button
                       type="button"
                       onClick={(e) => {
@@ -260,8 +268,9 @@ export default function CityTourPage() {
                           </a>
                         )}
 
+                        {/* Booking CTA inside expanded content */}
                         <button className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105">
-                          Book This Adventure
+                          Book Now
                         </button>
                       </div>
                     )}
@@ -277,8 +286,8 @@ export default function CityTourPage() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-serif font-bold text-gray-800 mb-4">Experience Gallery</h2>
-            <p className="text-lg text-gray-600">Moments captured from our tours and adventures</p>
+            <h2 className="text-4xl font-serif font-bold text-gray-800 mb-4">Step Into the Experience Gallery Where Moments Become Masterpieces</h2>
+            <p className="text-lg text-gray-600">Captured moments from our unforgettable journeys and explorations</p>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

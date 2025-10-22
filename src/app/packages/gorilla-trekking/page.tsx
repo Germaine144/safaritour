@@ -124,12 +124,12 @@ export default function GorillaTrekkingPage() {
                 <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 sticky top-6">
                   <h3 className="text-2xl font-bold mb-2 text-gray-800">{title}</h3>
                   {subtitle && (
-                    <p className="text-sm text-green-600 mb-4">{subtitle}</p>
+                    <p className="text-sm text-orange-600 mb-4">{subtitle}</p>
                   )}
                   <ul className="space-y-4">
                     {highlights.map((h) => (
                       <li key={h} className="flex items-center gap-3">
-                        <ArrowRight className="w-5 h-5 text-green-600 flex-shrink-0" />
+                        <ArrowRight className="w-5 h-5 text-orange-600 flex-shrink-0" />
                         <span className="text-gray-700">{h}</span>
                       </li>
                     ))}
@@ -163,9 +163,9 @@ export default function GorillaTrekkingPage() {
 
                   <div className="p-6">
                     <div className="mb-4">
-                      <h3 className="text-lg font-bold text-gray-800 group-hover:text-green-600 transition-colors">{itinerary.title}</h3>
+                      <h3 className="text-lg font-bold text-gray-800 group-hover:text-orange-600 transition-colors">{itinerary.title}</h3>
                     </div>
-                    <p className="text-sm text-green-600 font-medium mb-3">{itinerary.subtitle}</p>
+                    <p className="text-sm text-orange-600 font-medium mb-3">{itinerary.subtitle}</p>
                     <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
                       <div className="flex items-center gap-1">
                         <Clock className="w-4 h-4" />
@@ -177,11 +177,19 @@ export default function GorillaTrekkingPage() {
                       </div>
                     </div>
 
+                    {/* Primary action on card */}
+                    <a
+                      href="/booking?tab=packages&package=gorilla-trekking"
+                      className="block w-full mb-3 bg-gradient-to-r from-orange-500 to-red-500 text-white text-center py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300"
+                    >
+                      Book Now
+                    </a>
+
                     <button
                       type="button"
                       onClick={() => setSelectedItinerary(selectedItinerary === itinerary.id ? null : itinerary.id)}
                       aria-expanded={selectedItinerary === itinerary.id}
-                      className="inline-flex items-center gap-2 text-green-700 font-semibold hover:text-green-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                      className="inline-flex items-center gap-2 text-orange-700 font-semibold hover:text-orange-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                     >
                       Discover More
                       <ArrowRight className="w-4 h-4" />
@@ -194,7 +202,7 @@ export default function GorillaTrekkingPage() {
                           <ul className="space-y-2">
                             {itinerary.highlights.map((highlight, i) => (
                               <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                                <ArrowRight className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                                <ArrowRight className="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" />
                                 <span>{highlight}</span>
                               </li>
                             ))}
@@ -206,20 +214,25 @@ export default function GorillaTrekkingPage() {
                           <ul className="space-y-2">
                             {itinerary.features.map((feature, i) => (
                               <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                                <ArrowRight className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                                <ArrowRight className="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" />
                                 <span>{feature}</span>
                               </li>
                             ))}
                           </ul>
                         </div>
 
-                        <div className="bg-green-50 rounded-lg p-4">
+                        <div className="bg-orange-50 rounded-lg p-4">
                           <h4 className="font-semibold text-gray-800 mb-2 flex items-center gap-2">
                             <Users className="w-4 h-4" />
                             What to Bring
                           </h4>
                           <p className="text-sm text-gray-700">{itinerary.whatToBring}</p>
                         </div>
+
+                        {/* Booking CTA inside expanded content */}
+                        <a href="/booking?tab=packages&package=gorilla-trekking" className="block w-full bg-gradient-to-r from-orange-500 to-red-500 text-white text-center py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300">
+                          Book Now
+                        </a>
                       </div>
                     )}
                   </div>

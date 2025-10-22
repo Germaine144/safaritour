@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import Image from 'next/image'; // Import the Image component
 import { ArrowRight, Star, X, Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface Offering {
@@ -180,11 +181,13 @@ const RwandaPage = () => {
       {/* Hero Section - Enhanced Mobile Responsiveness */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6">
         <div className="absolute inset-0 w-full h-full">
-          {/* Linter Warning 1: Using `<img>` instead of `next/image` */}
-          <img
+          {/* Linter Warning 1: Changed <img> to Image */}
+          <Image
             src="/image/journey.jpg" 
             alt="Safari Background"
-            className="w-full h-full object-cover brightness-[0.3]"
+            layout="fill"
+            objectFit="cover"
+            className="brightness-[0.3]"
           />
         </div>
         
@@ -225,31 +228,77 @@ const RwandaPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {offerings.map((offering, index) => (
               <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <div className="relative w-full h-56 sm:h-64">
-                  {/* Linter Warning 2: Using `<img>` instead of `next/image` */}
-                  <img 
-                    src={offering.image}
-                    alt={offering.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-orange-700 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold z-10">
-                    {offering.duration}
-                  </div>
-                </div>
-                
-                <div className="p-4 sm:p-6">
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 leading-tight">{offering.title}</h3>
-                  <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 leading-relaxed">{offering.description}</p>
-                  
-                  <div className="flex items-center justify-between mb-3 sm:mb-4 flex-wrap gap-2">
-                    <span className="text-xl sm:text-2xl font-bold text-orange-700">{offering.price}</span>
-                    <div className="flex items-center text-yellow-500">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />
-                      ))}
+                {/* Mobile Layout: Header first, then image, then description */}
+                <div className="sm:hidden">
+                  {/* Header Section */}
+                  <div className="p-4 pb-3">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight">{offering.title}</h3>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xl font-bold text-orange-700">{offering.price}</span>
+                      <div className="flex items-center text-yellow-500">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-4 h-4 fill-current" />
+                        ))}
+                      </div>
                     </div>
                   </div>
                   
+                  {/* Image Section */}
+                  <div className="relative w-full h-56">
+                    {/* Linter Warning 2: Changed <img> to Image */}
+                    <Image 
+                      src={offering.image}
+                      alt={offering.title}
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                    <div className="absolute top-3 right-3 bg-orange-700 text-white px-2 py-1 rounded-full text-xs font-semibold z-10">
+                      {offering.duration}
+                    </div>
+                  </div>
+                  
+                  {/* Description Section */}
+                  <div className="p-4 pt-3">
+                    <p className="text-sm text-gray-600 mb-3 leading-relaxed">{offering.description}</p>
+                    
+                    <button 
+                      onClick={() => openModal(offering)}
+                      className="w-full bg-orange-700 hover:bg-orange-800 text-white py-2 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center space-x-2"
+                    >
+                      <span>Read More</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Desktop Layout: Original layout */}
+                <div className="hidden sm:block">
+                  <div className="relative w-full h-56 sm:h-64">
+                    {/* Linter Warning 3: Changed <img> to Image */}
+                    <Image 
+                      src={offering.image}
+                      alt={offering.title}
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                    <div className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-orange-700 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold z-10">
+                      {offering.duration}
+                    </div>
+                  </div>
+                  
+                  <div className="p-4 sm:p-6">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 leading-tight">{offering.title}</h3>
+                    <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 leading-relaxed">{offering.description}</p>
+                    
+                    <div className="flex items-center justify-between mb-3 sm:mb-4 flex-wrap gap-2">
+                      <span className="text-xl sm:text-2xl font-bold text-orange-700">{offering.price}</span>
+                      <div className="flex items-center text-yellow-500">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />
+                        ))}
+                      </div>
+                    </div>
+                    
                   <button 
                     onClick={() => openModal(offering)}
                     className="w-full bg-orange-700 hover:bg-orange-800 text-white py-2 sm:py-3 rounded-lg font-semibold text-sm sm:text-base transition-all duration-300 flex items-center justify-center space-x-2"
@@ -257,6 +306,7 @@ const RwandaPage = () => {
                     <span>Read More</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -330,11 +380,13 @@ const RwandaPage = () => {
       {/* Modal - Fully Responsive */}
       {selectedOffering && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-2 sm:p-4 overflow-y-auto">
-          {/* Linter Warning 3: Using `<img>` instead of `next/image` */}
-          <img
+          {/* Linter Warning 4: Changed <img> to Image */}
+          <Image
             src="/image/canopy.jpg"
             alt="Modal Background"
-            className="absolute inset-0 w-full h-full object-cover opacity-20"
+            layout="fill"
+            objectFit="cover"
+            className="opacity-20"
           />
           
           <div className="bg-white rounded-lg max-w-6xl w-full my-4 sm:my-8 overflow-hidden relative shadow-2xl z-20 max-h-[95vh] sm:max-h-[90vh]">
@@ -356,11 +408,12 @@ const RwandaPage = () => {
                   >
                     {selectedOffering.images.map((image: string, index: number) => (
                       <div key={index} className="min-w-full h-full relative">
-                        {/* Linter Warning 4: Using `<img>` instead of `next/image` */}
-                        <img
+                        {/* Linter Warning 5: Changed <img> to Image */}
+                        <Image
                           src={image}
                           alt={`${selectedOffering.title} ${index + 1}`}
-                          className="w-full h-full object-cover"
+                          layout="fill"
+                          objectFit="cover"
                         />
                       </div>
                     ))}
@@ -444,6 +497,16 @@ const RwandaPage = () => {
                       <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                         {selectedOffering.included}
                       </p>
+                    </div>
+
+                    {/* Book Now Button in Modal */}
+                    <div className="pt-4 border-t border-gray-200">
+                      <a
+                        href={`/booking?tab=destinations&country=rwanda&itinerary=${encodeURIComponent(selectedOffering.title)}`}
+                        className="block w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white text-center py-3 px-6 rounded-lg font-semibold transition-all duration-300"
+                      >
+                        Book This Itinerary
+                      </a>
                     </div>
 
                     <div className="pt-4 sm:pt-6 pb-2 sm:pb-4 sticky bottom-0 bg-white">

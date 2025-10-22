@@ -171,9 +171,9 @@ export default function AkageraPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-800 mb-6">Choose Your Safari</h2>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-800 mb-6">Begin Your Journey Choose the Safari That Speaks to You</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Flexible options from classic day safaris to luxury overnights and birding expeditions
+           Flexible safari options include classic day trips, luxury overnights, and birding expeditions—crafted for unforgettable wildlife adventures
             </p>
           </div>
 
@@ -202,6 +202,14 @@ export default function AkageraPage() {
                         <span>Start: {itinerary.startTime}</span>
                       </div>
                     </div>
+
+                    {/* Primary action on card */}
+                    <a
+                      href="/booking?tab=packages&package=akagera-national-park"
+                      className="block w-full mb-3 bg-gradient-to-r from-orange-500 to-red-500 text-white text-center py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300"
+                    >
+                      Book Now
+                    </a>
 
                     <button
                       type="button"
@@ -233,6 +241,11 @@ export default function AkageraPage() {
                           </h4>
                           <p className="text-sm text-gray-700">{itinerary.whatToBring}</p>
                         </div>
+
+                        {/* Booking CTA inside expanded content */}
+                        <button className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300">
+                          Book Now
+                        </button>
                       </div>
                     )}
                   </div>

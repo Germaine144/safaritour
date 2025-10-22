@@ -213,42 +213,89 @@ const TanzaniaPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {offerings.map((offering, index) => (
               <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <div className="relative w-full h-64"> {/* Define dimensions for Image parent */}
-                  {/* Using Next.js Image component */}
-                  <Image 
-                    src={offering.image}
-                    alt={offering.title}
-                    fill // Use 'fill' to make image cover parent, parent must be relative and have dimensions
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Optimize image loading
-                  />
-                  <div className="absolute top-4 right-4 bg-orange-700 text-white px-3 py-1 rounded-full text-sm font-semibold z-10"> {/* Added z-10 */}
-                    {offering.duration}
-                  </div>
-                </div>
-                
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{offering.title}</h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">{offering.description}</p>
-                  
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-2xl font-bold text-amber-600">{offering.price}</span>
-                    <div className="flex items-center text-amber-600">
-                      <Star className="w-5 h-5 fill-current" />
-                      <Star className="w-5 h-5 fill-current" />
-                      <Star className="w-5 h-5 fill-current" />
-                      <Star className="w-5 h-5 fill-current" />
-                      <Star className="w-5 h-5 fill-current" />
+                {/* Mobile Layout: Header first, then image, then description */}
+                <div className="md:hidden">
+                  {/* Header Section */}
+                  <div className="p-6 pb-4">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">{offering.title}</h3>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-2xl font-bold text-amber-600">{offering.price}</span>
+                      <div className="flex items-center text-amber-600">
+                        <Star className="w-5 h-5 fill-current" />
+                        <Star className="w-5 h-5 fill-current" />
+                        <Star className="w-5 h-5 fill-current" />
+                        <Star className="w-5 h-5 fill-current" />
+                        <Star className="w-5 h-5 fill-current" />
+                      </div>
                     </div>
                   </div>
                   
-                  <button 
-                    onClick={() => openModal(offering)}
-                    className="w-full bg-orange-700 hover:bg-amber-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center space-x-2"
-                  >
-                    <span>Read More</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
+                  {/* Image Section */}
+                  <div className="relative w-full h-64">
+                    <Image 
+                      src={offering.image}
+                      alt={offering.title}
+                      fill
+                      className="object-cover"
+                      sizes="100vw"
+                    />
+                    <div className="absolute top-4 right-4 bg-orange-700 text-white px-3 py-1 rounded-full text-sm font-semibold z-10">
+                      {offering.duration}
+                    </div>
+                  </div>
+                  
+                  {/* Description Section */}
+                  <div className="p-6 pt-4">
+                    <p className="text-gray-600 mb-4 leading-relaxed">{offering.description}</p>
+                    
+                    <button 
+                      onClick={() => openModal(offering)}
+                      className="w-full bg-orange-700 hover:bg-amber-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center space-x-2"
+                    >
+                      <span>Read More</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Desktop Layout: Original layout */}
+                <div className="hidden md:block">
+                  <div className="relative w-full h-64">
+                    <Image 
+                      src={offering.image}
+                      alt={offering.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    <div className="absolute top-4 right-4 bg-orange-700 text-white px-3 py-1 rounded-full text-sm font-semibold z-10">
+                      {offering.duration}
+                    </div>
+                  </div>
+                  
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">{offering.title}</h3>
+                    <p className="text-gray-600 mb-4 leading-relaxed">{offering.description}</p>
+                    
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-2xl font-bold text-amber-600">{offering.price}</span>
+                      <div className="flex items-center text-amber-600">
+                        <Star className="w-5 h-5 fill-current" />
+                        <Star className="w-5 h-5 fill-current" />
+                        <Star className="w-5 h-5 fill-current" />
+                        <Star className="w-5 h-5 fill-current" />
+                        <Star className="w-5 h-5 fill-current" />
+                      </div>
+                    </div>
+                    
+                    <button 
+                      onClick={() => openModal(offering)}
+                      className="w-full bg-orange-700 hover:bg-amber-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center space-x-2"
+                    >
+                      <span>Read More</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -428,6 +475,16 @@ const TanzaniaPage = () => {
                       <p className="text-gray-700 leading-relaxed">
                         {selectedOffering.included}
                       </p>
+                    </div>
+
+                    {/* Book Now Button in Modal */}
+                    <div className="pt-4 border-t border-gray-200">
+                      <a
+                        href={`/booking?tab=destinations&country=tanzania&itinerary=${encodeURIComponent(selectedOffering.title)}`}
+                        className="block w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white text-center py-3 px-6 rounded-lg font-semibold transition-all duration-300"
+                      >
+                        Book This Itinerary
+                      </a>
                     </div>
 
                     <div className="pt-6 pb-4 sticky bottom-0 bg-white">

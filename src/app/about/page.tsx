@@ -31,38 +31,17 @@ const AboutPage = () => {
 
   const stats = [
     { number: "15+", label: "Years Experience" },
-    { number: "5000+", label: "Happy Travelers" },
-    { number: "50+", label: "Expert Guides" },
+    { number: "500+", label: "Happy Travelers" },
+    { number: "1", label: "Passionate Founder" },
     { number: "4", label: "Countries Covered" }
   ];
 
-  const team = [
-    {
-      name: "David Kamau",
-      role: "Founder & Safari Director",
-      // Using a placeholder for now, ensure your image paths are correct
-      image: "/images/big51.jpg", // Changed to /images for consistency with Next.js public folder
-      description: "With over 20 years in the safari industry, David's passion for East African wildlife is unmatched."
-    },
-    {
-      name: "Sarah Mwangi",
-      role: "Operations Manager",
-      image: "/images/wilds1.jpg", // Changed to /images
-      description: "Sarah ensures every safari runs smoothly, coordinating logistics across four countries with precision."
-    },
-    {
-      name: "James Omondi",
-      role: "Lead Safari Guide",
-      image: "/images/journey.jpg", // Changed to /images
-      description: "James' encyclopedic knowledge of wildlife behavior makes every game drive an educational adventure."
-    },
-    {
-      name: "Grace Nyambura",
-      role: "Cultural Experience Coordinator",
-      image: "/images/culture.jpg", // Changed to /images
-      description: "Grace creates authentic cultural connections, bridging the gap between travelers and local communities."
-    }
-  ];
+  const founder = {
+    name: "David Kamau",
+    role: "Founder & Safari Director",
+    image: "/image/tourist.jpg", // Using an existing image from your project
+    description: "With over 15 years of passion for East African wildlife and conservation, I founded this safari company to share the incredible beauty of Africa with travelers from around the world. Born and raised in Kenya, I've spent countless hours in the bush, learning from local communities and wildlife experts. My mission is to create authentic, transformative experiences that not only showcase Africa's natural wonders but also support conservation efforts and empower local communities. Every safari I organize reflects my deep commitment to sustainable tourism and creating memories that last a lifetime."
+  };
 
   return (
     <div className="min-h-screen">
@@ -136,9 +115,9 @@ const AboutPage = () => {
                     contributing to conservation efforts.
                   </p>
                   <p>
-                    Today, we&apos;ve grown into a team of passionate professionals operating across Rwanda, Tanzania, 
-                    Kenya, and Zanzibar. Every safari we organize reflects our commitment to excellence, authenticity, 
-                    and sustainable tourism.
+                    Today, I personally operate across Rwanda, Tanzania, Kenya, and Zanzibar, working closely with 
+                    trusted local guides and communities. Every safari I organize reflects my commitment to excellence, 
+                    authenticity, and sustainable tourism, ensuring each traveler receives a truly personalized experience.
                   </p>
                 </div>
               </div>
@@ -200,36 +179,47 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Team Section */}
+      {/* Founder Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
-              Meet Our Team
+              Meet Your Safari Guide
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              The passionate professionals who make your safari dreams come true
+              The passionate founder who personally crafts your unforgettable African adventure
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            {team.map((member, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <div className="relative h-64">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="md:flex md:flex-row-reverse">
+                <div className="relative h-80 md:h-auto md:w-1/3">
                   <Image 
-                    src={member.image} 
-                    alt={member.name}
-                    fill // Use fill when parent has defined dimensions
+                    src={founder.image} 
+                    alt={founder.name}
+                    fill
                     className="object-cover object-center"
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                  <p className="text-orange-700 font-semibold mb-3">{member.role}</p>
-                  <p className="text-gray-600 text-sm leading-relaxed">{member.description}</p>
+                <div className="p-8 md:w-2/3">
+                  <h3 className="text-3xl font-bold text-gray-900 mb-2">{founder.name}</h3>
+                  <p className="text-orange-700 font-semibold text-lg mb-6">{founder.role}</p>
+                  <p className="text-gray-600 leading-relaxed text-lg">{founder.description}</p>
+                  
+                  <div className="mt-8 grid grid-cols-2 gap-6">
+                    <div className="text-center p-4 bg-orange-50 rounded-lg">
+                      <div className="text-2xl font-bold text-orange-700 mb-1">15+</div>
+                      <div className="text-sm text-gray-600">Years Experience</div>
+                    </div>
+                    <div className="text-center p-4 bg-orange-50 rounded-lg">
+                      <div className="text-2xl font-bold text-orange-700 mb-1">4</div>
+                      <div className="text-sm text-gray-600">Countries Covered</div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
