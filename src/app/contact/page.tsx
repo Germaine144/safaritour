@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Clock, Send,  } from 'lucide-react';
-
+import Image from 'next/image';
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -47,7 +47,7 @@ const ContactPage = () => {
     {
       icon: Phone,
       title: "Phone",
-      details: ["+250 788 123 456", "+254 712 345 678"],
+      details: ["+250 787 938 140", "+250 791 593 529"],
       description: "Mon-Sat, 8AM-6PM EAT"
     },
     {
@@ -82,21 +82,29 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 w-full h-full">
-          <div className="w-full h-full bg-gradient-to-br from-orange-800 via-amber-700 to-yellow-600"></div>
-          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        </div>
-        
-        <div className="relative z-10 text-center text-white max-w-4xl px-6">
-          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6">
-            GET IN TOUCH
-          </h1>
-          <p className="text-xl md:text-2xl leading-relaxed opacity-90">
-            Let&apos;s plan your unforgettable African safari adventure together
-          </p>
-        </div>
-      </section>
+
+            <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+             <div className="absolute inset-0 w-full h-full">
+                       {/* Linter Warning 1: Changed <img> to Image */}
+                       <Image
+                         src="/image/contact.jpg" 
+                         alt="Safari Background"
+                         layout="fill"
+                         objectFit="cover"
+                         className="brightness-[0.2]"
+                       />
+                     </div>
+              
+              <div className="relative z-10 text-center text-white max-w-4xl px-4 sm:px-6">
+                <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif font-bold mb-4 md:mb-6">
+             Adventure Begins with a Message
+                </h1>
+                <p className="text-lg sm:text-xl md:text-2xl leading-relaxed opacity-90">
+                  Let&apos;s plan your unforgettable African safari adventure — explore stunning landscapes, encounter majestic wildlife, and experience Africa&apos;s vibrant heart with expert-guided journeys
+       
+                </p>
+              </div>
+            </section>
 
       {/* Contact Info Cards */}
       <section className="py-20 bg-white">

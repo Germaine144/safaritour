@@ -47,28 +47,23 @@ const AboutPage = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
-        {/* If you want a background image for the hero, use Image component with `fill` and `priority` */}
-        {/* Example with an image, uncomment and adjust src/alt as needed: */}
-        <Image
-          src="/image/Lotus flower.jpg" // Path to your hero image
-          alt="African Safari Landscape"
-          fill
-          priority
-          className="object-cover object-center brightness-[0.3]"
-        />
+       <div className="absolute inset-0 w-full h-full">
+                 {/* Linter Warning 1: Changed <img> to Image */}
+                 <Image
+                   src="/image/journey.jpg" 
+                   alt="Safari Background"
+                   layout="fill"
+                   objectFit="cover"
+                   className="brightness-[0.3]"
+                 />
+               </div>
         
-        {/* Current gradient background */}
-        {/* <div className="absolute inset-0 w-full h-full">
-          <div className="w-full h-full bg-gradient-to-br from-orange-900 via-amber-800 to-yellow-700"></div>
-          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        </div> */}
-        
-        <div className="relative z-10 text-center text-white max-w-4xl px-6">
-          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6">
-            OUR STORY
+        <div className="relative z-10 text-center text-white max-w-4xl px-4 sm:px-6">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif font-bold mb-4 md:mb-6">
+           Inspired by Africa&apos;s Soul
           </h1>
-          <p className="text-xl md:text-2xl leading-relaxed opacity-90">
-            Born from a passion for Africa&apos;s wild beauty, crafted through years of expertise
+          <p className="text-lg sm:text-xl md:text-2xl leading-relaxed opacity-90">
+Born from a passion for Africa&apos;s wild beauty and crafted through years of expertise, we create unforgettable journeys that connect travelers to the continent&apos;s heart, culture, and adventure.
           </p>
         </div>
       </section>
@@ -102,7 +97,7 @@ const AboutPage = () => {
                 <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">
                   Where It All Began
                 </h2>
-                <div className="space-y-4 text-lg text-gray-600 leading-relaxed">
+                <div className="space-y-4 text-base sm:text-lg text-gray-600 leading-relaxed">
                   <p>
                     Our journey started in 2025 when our founder, UMUHIRE Germaine, a Kenyan-born wildlife enthusiast, 
                     realized that many visitors to East Africa were missing the authentic, transformative safari 
@@ -125,9 +120,9 @@ const AboutPage = () => {
                 <Image 
                   src="/image/phonee.jpg" 
                   alt="Safari landscape with wildlife" 
-                  width={600} 
-                  height={600}
-                  className="rounded-lg shadow-2xl w-full h-auto" // Added w-full h-auto for responsiveness
+                  width={400} 
+                  height={300}
+                  className="rounded-lg shadow-2xl w-full h-auto max-w-sm mx-auto" // Better mobile responsiveness
                 />
                 <div className="absolute -bottom-6 -left-6 bg-orange-800 text-white p-6 rounded-lg shadow-xl">
                   <p className="text-4xl font-bold">15+</p>
@@ -193,16 +188,16 @@ const AboutPage = () => {
 
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div className="md:flex md:flex-row-reverse">
-                <div className="relative h-80 md:h-auto md:w-1/3">
-                  <Image 
-                    src={founder.image} 
-                    alt={founder.name}
-                    fill
-                    className="object-cover object-center"
-                  />
-                </div>
-                <div className="p-8 md:w-2/3">
+               <div className="md:flex md:flex-row-reverse">
+                 <div className="relative h-64 md:h-auto md:w-1/3">
+                   <Image 
+                     src={founder.image} 
+                     alt={founder.name}
+                     fill
+                     className="object-cover object-center"
+                   />
+                 </div>
+                 <div className="p-6 md:p-8 md:w-2/3">
                   <h3 className="text-3xl font-bold text-gray-900 mb-2">{founder.name}</h3>
                   <p className="text-orange-700 font-semibold text-lg mb-6">{founder.role}</p>
                   <p className="text-gray-600 leading-relaxed text-lg">{founder.description}</p>
