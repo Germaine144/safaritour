@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { ArrowRight, Star, Calendar, X } from 'lucide-react';
+import { ArrowRight, Star, Calendar, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface Offering {
   title: string;
@@ -18,6 +18,22 @@ interface Offering {
 const ZanzibarPage = () => {
   const [selectedOffering, setSelectedOffering] = useState<Offering | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const prevImage = () => {
+    if (selectedOffering) {
+      setCurrentImageIndex((prev) => 
+        prev === 0 ? selectedOffering.images.length - 1 : prev - 1
+      );
+    }
+  };
+
+  const nextImage = () => {
+    if (selectedOffering) {
+      setCurrentImageIndex((prev) => 
+        prev === selectedOffering.images.length - 1 ? 0 : prev + 1
+      );
+    }
+  };
 
   const offerings: Offering[] = [
     {
@@ -377,45 +393,62 @@ const ZanzibarPage = () => {
         </div>
       </section>
 
-      {/* Modal */}
+      {/* Modal - Fully Responsive */}
       {selectedOffering && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-2 sm:p-4 overflow-y-auto">
           <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20" 
                style={{ backgroundImage: 'url("/image/zuribech.jpg")' }}></div>
           
-          <div className="bg-white rounded-lg max-w-6xl w-full h-[85vh] overflow-hidden relative shadow-2xl">
+          <div className="bg-white rounded-lg max-w-6xl w-full my-4 sm:my-8 overflow-hidden relative shadow-2xl z-20 max-h-[95vh] sm:max-h-[90vh]">
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 z-50 bg-gray-800 text-white rounded-full p-2 hover:bg-gray-700 transition-colors"
+              className="absolute top-2 right-2 sm:top-4 sm:right-4 z-50 bg-gray-800 text-white rounded-full p-1.5 sm:p-2 hover:bg-gray-700 transition-colors"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
 
-            <div className="flex h-full">
-              <div className="w-2/5 relative overflow-hidden">
+            <div className="flex flex-col lg:flex-row h-full max-h-[95vh] sm:max-h-[85vh]">
+              {/* Image Slideshow - Stacked on Mobile */}
+              <div className="w-full lg:w-2/5 relative overflow-hidden h-64 sm:h-80 lg:h-auto">
                 <div className="relative h-full">
                   <div 
                     className="flex h-full transition-transform duration-1000 ease-in-out"
                     style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
                   >
                     {selectedOffering.images.map((image, index) => (
-                      <div key={index} className="min-w-full h-full">
+                      <div key={index} className="min-w-full h-full relative">
                         <Image
                           src={image}
                           alt={`${selectedOffering.title} ${index + 1}`}
                           fill
-                          sizes="40vw"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
                           className="object-cover"
                         />
                       </div>
                     ))}
                   </div>
 
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+                  {/* Navigation Arrows - Mobile Friendly */}
+                  <button
+                    onClick={prevImage}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1.5 sm:p-2 rounded-full transition-colors z-10"
+                  >
+                    <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </button>
+                  <button
+                    onClick={nextImage}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1.5 sm:p-2 rounded-full transition-colors z-10"
+                  >
+                    <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </button>
+
+                  {/* Indicators - Clickable */}
+                  <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 flex space-x-1.5 sm:space-x-2 z-10">
                     {selectedOffering.images.map((_, index) => (
-                      <div
+                      <button
                         key={index}
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        onClick={() => setCurrentImageIndex(index)}
+                        className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${
                           index === currentImageIndex ? 'bg-white scale-125' : 'bg-white/60'
                         }`}
                       />
@@ -424,52 +457,53 @@ const ZanzibarPage = () => {
                 </div>
               </div>
 
-              <div className="w-3/5 overflow-y-auto bg-white">
-                <div className="p-8">
-                  <div className="mb-6">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-3 uppercase tracking-wide">
+              {/* Content - Scrollable */}
+              <div className="w-full lg:w-3/5 overflow-y-auto bg-white">
+                <div className="p-4 sm:p-6 lg:p-8">
+                  <div className="mb-4 sm:mb-6">
+                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 sm:mb-3 uppercase tracking-wide leading-tight">
                       {selectedOffering.title}
                     </h2>
-                    <div className="flex items-center space-x-6 text-gray-600 mb-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 space-y-2 sm:space-y-0 text-gray-600">
                       <div className="flex items-center space-x-2">
-                        <Calendar className="w-5 h-5 text-orange-700" />
-                        <span className="font-medium">{selectedOffering.duration}</span>
+                        <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-orange-700" />
+                        <span className="font-medium text-sm sm:text-base">{selectedOffering.duration}</span>
                       </div>
-                      <div className="text-3xl font-bold text-orange-700">
+                      <div className="text-2xl sm:text-3xl font-bold text-orange-700">
                         {selectedOffering.price}
                       </div>
                     </div>
                   </div>
 
-                  <div className="space-y-6">
+                  <div className="space-y-4 sm:space-y-6">
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-3 uppercase tracking-wide">
+                      <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3 uppercase tracking-wide">
                         Welcome to this Zanzibar Experience
                       </h3>
-                      <p className="text-gray-700 leading-relaxed">
+                      <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                         {selectedOffering.detailedDescription}
                       </p>
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-3 uppercase tracking-wide">
+                      <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3 uppercase tracking-wide">
                         Experience Highlights
                       </h3>
-                      <ul className="space-y-3">
+                      <ul className="space-y-2 sm:space-y-3">
                         {selectedOffering.highlights.map((highlight, index) => (
-                          <li key={index} className="flex items-start space-x-3">
-                            <div className="w-2 h-2 bg-orange-700 rounded-full mt-3 flex-shrink-0"></div>
-                            <span className="text-gray-700 leading-relaxed">{highlight}</span>
+                          <li key={index} className="flex items-start space-x-2 sm:space-x-3">
+                            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-orange-700 rounded-full mt-2 sm:mt-3 flex-shrink-0"></div>
+                            <span className="text-sm sm:text-base text-gray-700 leading-relaxed">{highlight}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-3 uppercase tracking-wide">
+                      <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3 uppercase tracking-wide">
                         What&apos;s Included
                       </h3>
-                      <p className="text-gray-700 leading-relaxed">
+                      <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                         {selectedOffering.included}
                       </p>
                     </div>
@@ -478,18 +512,10 @@ const ZanzibarPage = () => {
                     <div className="pt-4 border-t border-gray-200">
                       <a
                         href={`/booking?tab=destinations&country=zanzibar&itinerary=${encodeURIComponent(selectedOffering.title)}`}
-                        className="block w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white text-center py-3 px-6 rounded-lg font-semibold transition-all duration-300"
+                        className="block w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white text-center py-3 px-6 rounded-lg font-semibold transition-all duration-300 text-sm sm:text-base"
                       >
                         Book This Itinerary
                       </a>
-                    </div>
-
-                    <div className="pt-6 pb-4 sticky bottom-0 bg-white">
-                      <div className="flex flex-col space-y-3">
-                        {/* <button className="w-full bg-orange-700 hover:bg-orange-800 text-white py-3 px-6 rounded-md font-semibold transition-colors uppercase tracking-wide">
-                          Book Now
-                        </button>   */}
-                      </div>
                     </div>
                   </div>
                 </div>

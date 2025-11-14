@@ -315,36 +315,74 @@ function BookingDetails({ CTALabel, disabled }: { CTALabel: string; disabled: bo
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-200 shadow p-6 space-y-4">
+    <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-200 shadow p-6 space-y-4 text-gray-800 ">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-          <input value={name} onChange={(e) => setName(e.target.value)} required className="w-full rounded-lg border-gray-300 focus:ring-orange-500 focus:border-orange-500" />
+          <label className="block text-sm font-medium text-gray-700 mb-1 ">Full Name</label>
+          <input 
+            value={name} 
+            onChange={(e) => setName(e.target.value)} 
+             placeholder="Please Enter Your Full Name" 
+            required 
+            className="w-full px-4 py-2 rounded-lg border-2 border-gray-300 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-colors outline-none" 
+          />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full rounded-lg border-gray-300 focus:ring-orange-500 focus:border-orange-500" />
+          <input 
+            type="email" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+             placeholder="Please Enter Your Email Address" 
+            required 
+            className="w-full px-4 py-2 rounded-lg border-2 border-gray-300 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-colors outline-none" 
+          />
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1 flex items-center gap-2"><Calendar className="w-4 h-4 text-orange-600" />Start Date</label>
-          <input type="date" value={start} onChange={(e) => setStart(e.target.value)} required className="w-full rounded-lg border-gray-300 focus:ring-orange-500 focus:border-orange-500" />
+          <input 
+            type="date" 
+            value={start} 
+            onChange={(e) => setStart(e.target.value)} 
+            required 
+            className="w-full px-4 py-2 rounded-lg border-2 border-gray-300 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-colors outline-none" 
+          />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">End Date</label>
-          <input type="date" value={end} onChange={(e) => setEnd(e.target.value)} required className="w-full rounded-lg border-gray-300 focus:ring-orange-500 focus:border-orange-500" />
+          <input 
+            type="date" 
+            value={end} 
+            onChange={(e) => setEnd(e.target.value)} 
+            required 
+            className="w-full px-4 py-2 rounded-lg border-2 border-gray-300 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-colors outline-none" 
+          />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1 flex items-center gap-2"><Users className="w-4 h-4 text-orange-600" />Guests</label>
-          <input type="number" min={1} value={guests} onChange={(e) => setGuests(Number(e.target.value))} required className="w-full rounded-lg border-gray-300 focus:ring-orange-500 focus:border-orange-500" />
+          <input 
+            type="number" 
+            min={1} 
+            value={guests} 
+            onChange={(e) => setGuests(Number(e.target.value))} 
+            required 
+            className="w-full px-4 py-2 rounded-lg border-2 border-gray-300 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-colors outline-none" 
+          />
         </div>
       </div>
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">Notes</label>
-        <textarea rows={4} value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Tell us about your preferences, special requests, or any questions you have..." className="w-full rounded-lg border-gray-300 focus:ring-orange-500 focus:border-orange-500" />
+        <textarea 
+          rows={4} 
+          value={notes} 
+          onChange={(e) => setNotes(e.target.value)} 
+          placeholder="Tell us about your preferences, special requests, or any questions you have..." 
+          className="w-full px-4 py-2 rounded-lg border-2 border-gray-300 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-colors outline-none resize-none" 
+        />
       </div>
 
       <button type="submit" disabled={disabled} className={`w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 px-6 rounded-lg font-semibold transition-all ${disabled ? "opacity-50 cursor-not-allowed" : "hover:from-orange-600 hover:to-red-600"}`}>
